@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "barklarm-expo",
-    "slug": "barklarm-expo",
+    "name": "barklarm",
+    "slug": "barklarm",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
