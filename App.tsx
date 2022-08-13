@@ -4,8 +4,10 @@ import * as TaskManager from "expo-task-manager"
 import * as Notifications from 'expo-notifications'
 import { NativeBaseProvider, Box } from "native-base";
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import Home from "./src/pages/Home";
+import Settings from "./src/pages/Settings";
 
 const TASK_NAME = "BACKGROUND_TASK"
 
@@ -54,16 +56,17 @@ const RegisterBackgroundTask = async () => {
   }
 }
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   RegisterBackgroundTask()
   return ( 
       <NativeBaseProvider>
         <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} />
-          </Stack.Navigator>
+          <Tab.Navigator>
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Settings" component={Settings} />
+          </Tab.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
   );
