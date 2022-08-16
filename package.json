@@ -10,7 +10,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@datadog/datadog-api-client": "^1.2.0",
+    "@datadog/mobile-react-native": "^1.0.0",
     "@expo/webpack-config": "^0.17.0",
     "@react-navigation/bottom-tabs": "^6.3.2",
     "@react-navigation/native": "^6.0.11",

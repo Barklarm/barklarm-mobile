@@ -22,7 +22,7 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
   return (
     <>
       {observables.map((observable: any, index: number) => (
-        <Column>
+        <Column key={`observable_${getTitle(observable)}`}>
           <Heading>{getTitle(observable)}</Heading>
           <Select
             selectedValue={observable.type}

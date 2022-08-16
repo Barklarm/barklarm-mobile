@@ -1,11 +1,11 @@
-import { Octokit } from 'octokit';
+//import { Octokit } from 'octokit';
 import { Observer } from '../../types/Observer';
 import { State } from '../../types/State';
 import { GithubActionConfiguration } from '../../types/GithubActionConfiguration';
 import { Status } from '../../types/Status';
 
 export class GithubAction implements Observer {
-  private octokit: Octokit;
+  //private octokit: Octokit;
   private owner: string;
   private repo: string;
   private workflowId: string;
@@ -14,9 +14,9 @@ export class GithubAction implements Observer {
   private baseLink: string;
 
   constructor({ authToken, owner, repo, workflowId, alias }: GithubActionConfiguration) {
-    this.octokit = new Octokit({
-      auth: authToken,
-    });
+    //this.octokit = new Octokit({
+    //  auth: authToken,
+    //});
     this.owner = owner;
     this.repo = repo;
     this.workflowId = workflowId;
@@ -25,7 +25,7 @@ export class GithubAction implements Observer {
   }
 
   public async getState(): Promise<State> {
-    try {
+    /*try {
       const response = await this.octokit.request('GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs', {
         owner: this.owner,
         repo: this.repo,
@@ -39,13 +39,13 @@ export class GithubAction implements Observer {
         link: html_url,
       };
     } catch (error) {
-      console.error(error);
+      console.error(error);*/
       return {
         name: this.alias,
         status: Status.NA,
         link: this.baseLink,
       };
-    }
+    //}
   }
 
   private getStatus(conclusion: string): Status {
