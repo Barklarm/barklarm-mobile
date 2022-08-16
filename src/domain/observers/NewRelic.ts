@@ -2,7 +2,6 @@ import { State } from '../../types/State';
 import { Observer } from '../../types/Observer';
 import { NewRelicConfiguration } from '../../types/NewRelicConfiguration';
 import { Status } from '../../types/Status';
-import fetch from 'electron-fetch';
 
 export class NewRelic implements Observer {
   private readonly url: string;

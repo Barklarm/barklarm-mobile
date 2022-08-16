@@ -3,12 +3,11 @@ import { Observer } from '../../types/Observer';
 import { CCTrayConfiguration } from '../../types/CCTrayConfiguration';
 import { Status } from '../../types/Status';
 import { XMLParser } from 'fast-xml-parser';
-import fetch from 'electron-fetch';
 
 export class CCTray implements Observer {
   private readonly url: string;
   private readonly alias: string;
-  private readonly projectName: string;
+  private readonly projectName?: string;
   private readonly parser: XMLParser;
   private readonly statusMap: any = {
     Success: Status.SUCCESS,

@@ -2,7 +2,6 @@ import { State } from '../../types/State';
 import { Observer } from '../../types/Observer';
 import { SentryConfiguration } from '../../types/SentryConfiguration';
 import { Status } from '../../types/Status';
-import fetch from 'electron-fetch';
 
 export class Sentry implements Observer {
   private readonly url: string;
