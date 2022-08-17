@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { NativeBaseProvider } from "native-base";
+import { ScrollView } from 'react-native';
+import { Appbar, Portal } from 'react-native-paper';
 import { Observers as ObserversComponent } from '../../components/Observers';
 import { mutations } from './helpers/mutations';
 import * as SecureStore from 'expo-secure-store';
@@ -14,14 +15,19 @@ export default function Settings(){
     })()
     }, []);
   return (
-    <NativeBaseProvider>
-          <ObserversComponent
-            observables={observables}
-            add={addObserver}
-            update={updateObserver}
-            remove={removeObserver}
-            save={() => SecureStore.setItemAsync('observables', JSON.stringify(observables))}
-          />
-    </NativeBaseProvider>
+    <Portal.Host>
+      <Appbar.Header>
+        <Appbar.Content title="Settings" />
+      </Appbar.Header>
+      <ScrollView>
+        <ObserversComponent
+          observables={observables}
+          add={addObserver}
+          update={updateObserver}
+          remove={removeObserver}
+          save={() => SecureStore.setItemAsync('observables', JSON.stringify(observables))}
+        />
+      </ScrollView>
+    </Portal.Host>
   );
 };

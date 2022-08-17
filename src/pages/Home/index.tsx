@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NativeBaseProvider, Column, Text } from "native-base";
+import { ScrollView } from 'react-native';
+import { Card, Button, Appbar, Paragraph } from 'react-native-paper';
 import * as SecureStore from 'expo-secure-store';
 import { GithubAction } from '../../domain/observers/GithubAction';
 import { CCTray } from '../../domain/observers/CCTray';
@@ -45,10 +46,25 @@ export default function Home() {
     })()
     }, []);
   return (
-    <NativeBaseProvider>
-      <Column>{observablesState.map((state: State) =>(
-        <Text key={`observable_${state.name}`}>{state.name} - {state.status}</Text>
-      ))}</Column>
-    </NativeBaseProvider>
+    <>
+    <Appbar.Header>
+      <Appbar.Content title="Home" />
+    </Appbar.Header>
+      <ScrollView>
+        {
+          observablesState.map((state: State) =>(
+            <Card key={`observable_${state.name}`}>
+              <Card.Title title={state.name} />
+              <Card.Content>
+                <Paragraph>Status {state.status}</Paragraph>
+              </Card.Content>
+              <Card.Actions>
+                <Button>Link</Button>
+              </Card.Actions>
+            </Card>
+          ))
+        }
+      </ScrollView >
+    </>
   );
 }

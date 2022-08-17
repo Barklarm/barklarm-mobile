@@ -1,10 +1,17 @@
-import React from 'react';
-import { Select, Input , Heading, Column, Button } from 'native-base';
+import React, { useState } from 'react';
+import { Card, Button, TextInput, FAB, Portal } from 'react-native-paper';
+import { Picker } from '@react-native-picker/picker';
+import { Select, Input , Heading, Column } from 'native-base';
 import { observersComponentBuilderMap } from './helpers/observersComponentBuilderMap';
 import { observersTitleBuilderMap } from './helpers/observersTitleBuilderMap';
 import { ObserversParams } from '../../types/ObserversParams';
 
 export const Observers = ({ observables, add, remove, update, save }: ObserversParams) => {
+  
+  const [state, setState] = React.useState({ open: false });
+
+  const onStateChange = ({ open }: any) => setState({ open });
+  const { open } = state;
   const getComponent = (observable: any, index: number, updateFieldWithValue: any): any => {
     try {
       return observersComponentBuilderMap[observable.type](observable, index, updateFieldWithValue);
@@ -22,42 +29,56 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
   return (
     <>
       {observables.map((observable: any, index: number) => (
-        <Column key={`observable_${getTitle(observable)}`}>
-          <Heading>{getTitle(observable)}</Heading>
-          <Select
+        <Card key={`observable_${getTitle(observable)}`}>
+          <Card.Title title={getTitle(observable)} />
+          <Card.Content>
+          <Picker
             selectedValue={observable.type}
-            accessibilityLabel="Observer Type"
-            placeholder="Observer Type"
-            onValueChange={(value) => update('type', index, value)}
+            onValueChange={(value: any) => update('type', index, value)}
           >
-            <Select.Item value={'githubAction'} label='Github Action' />
-            <Select.Item value={'ccTray'} label='CCTray' />
-            <Select.Item value={'datadogMonitor'} label='Datadog Monitor' />
-            <Select.Item value={'sentry'} label='Sentry' />
-            <Select.Item value={'newRelic'} label='New Relic' />
-          </Select>
+            <Picker.Item value={'githubAction'} label='Github Action' />
+            <Picker.Item value={'ccTray'} label='CCTray' />
+            <Picker.Item value={'datadogMonitor'} label='Datadog Monitor' />
+            <Picker.Item value={'sentry'} label='Sentry' />
+            <Picker.Item value={'newRelic'} label='New Relic' />
+          </Picker>
           {getComponent(observable, index, update)}
-          <Input 
-            accessibilityLabel="alias"
-            placeholder="alias"
-            
+          <TextInput 
+            label="alias"
             value={observable.alias}
             onChangeText={(value) => update('alias', index, value)}
           />
-          <Column direction="row" justifyContent="flex-end">
-            <Button variant="contained" onPress={() => remove(index)}>
+          </Card.Content>
+          <Card.Actions>
+            <Button onPress={() => remove(index)}>
               Delete
             </Button>
-          </Column>
-        </Column>
+          </Card.Actions>
+        </Card>
       ))}
+      <Portal>
+      <FAB.Group
+          open={open}
+          icon={open ? 'cog' : 'plus'}
+          actions={[
+            { label: 'Add',icon: 'plus', onPress: () => console.log('Pressed add') },
+            { label: 'Save',icon: 'content-save', onPress: () => console.log('Pressed remove') },
+          ]}
+          onStateChange={onStateChange}
+          onPress={() => {
+            if (open) {
+              setState({open: false})
+            }
+          }}
+        />
+        </Portal>
       <Column
         justifyContent="flex-end"
       >
-        <Button variant="contained" onPress={() => save(observables)}>
+        <Button onPress={() => save(observables)}>
           Save
         </Button>
-        <Button variant="contained" onPress={() => add({ type: '' })}>
+        <Button onPress={() => add({ type: '' })}>
           Add
         </Button>
       </Column>
