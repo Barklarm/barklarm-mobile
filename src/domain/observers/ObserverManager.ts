@@ -7,8 +7,10 @@ import { MapType } from '../../types/MapType';
 import { Sentry } from './Sentry';
 import { NewRelic } from './NewRelic';
 
+import * as SecureStore from 'expo-secure-store';
+
 export class ObserverManager {
-  private observers: Observer[];
+  private observers: Observer[] = [];
   private readonly ObserversBuildersMap: MapType<(config: any) => Observer> = {
     githubAction: (configuration: any) => new GithubAction(configuration as any),
     ccTray: (configuration: any) => new CCTray(configuration as any),
@@ -21,8 +23,10 @@ export class ObserverManager {
     return await Promise.all(this.observers.map((observer) => observer.getState()));
   }
 
-  public async refershObservers(observableConfigurations: ObserverConfiguration[]) {
-    this.observers = observableConfigurations.map(
+  public async refershObservers() {
+  const result: string = await SecureStore.getItemAsync('observables') || '[]';
+  const observableConfiguration = JSON.parse(result)
+    this.observers = observableConfiguration.map(
       (configuration: ObserverConfiguration) => {
         try {
           return this.ObserversBuildersMap[configuration.type](configuration);
@@ -30,6 +34,6 @@ export class ObserverManager {
           console.error(error);
         }
       }
-    ).filter((observable?: Observer) => observable !== undefined);
+    ).filter((observable?: Observer) => observable !== undefined) as any;
   }
 }

@@ -5,7 +5,7 @@ import { Observers as ObserversComponent } from '../../components/Observers';
 import { mutations } from './helpers/mutations';
 import * as SecureStore from 'expo-secure-store';
 
-export default function Settings(){
+export default function Settings({observerManager}: any){
   const [observables, setObservables] = useState([]);
   const { addObserver, removeObserver, updateObserver } = mutations(observables, setObservables);
   useEffect(() => {
@@ -25,7 +25,11 @@ export default function Settings(){
           add={addObserver}
           update={updateObserver}
           remove={removeObserver}
-          save={() => SecureStore.setItemAsync('observables', JSON.stringify(observables))}
+          save={async () => {
+              await SecureStore.setItemAsync('observables', JSON.stringify(observables))
+              await observerManager.refershObservers()
+            }
+          }
         />
       </ScrollView>
     </Portal.Host>
