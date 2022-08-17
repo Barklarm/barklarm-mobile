@@ -33,7 +33,6 @@ export const observerStatusChecker = (observerManager: ObserverManager) => {
         );
         }
       });
-      console.log("States ", states)
       return states
         ? BackgroundFetch.BackgroundFetchResult.NewData
         : BackgroundFetch.BackgroundFetchResult.NoData

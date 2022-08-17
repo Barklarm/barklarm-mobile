@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView } from 'react-native';
+import { ScrollView, Image } from 'react-native';
 import { Card, Button, Appbar, Paragraph } from 'react-native-paper';
+import { Avatar, IconButton } from 'react-native-paper';
 import { State } from "../../types/State";
+import { Status } from "../../types/Status";
 
 export default function Home({observerManager}: any) {
   const [observablesState, setObservablesState] = useState([]);
+  const imageSelector = (status: Status) => {
+    switch (status) {
+      case Status.SUCCESS:
+        return require('../../../assets/ok_icon_big.png')
+      case Status.CHECKING:
+        return require('../../../assets/running_icon_big.png')
+      case Status.NA:
+        return require('../../../assets/na_icon_big.png')
+      case Status.FAILURE:
+        return require('../../../assets/fail_icon_big.png')
+    }
+    
+  }
   useEffect(() => {
     (async () => {
       observerManager.refershObservers()
@@ -25,13 +40,11 @@ export default function Home({observerManager}: any) {
         {
           observablesState.map((state: State) =>(
             <Card key={`observable_${state.name}`}>
-              <Card.Title title={state.name} />
-              <Card.Content>
-                <Paragraph>Status {state.status}</Paragraph>
-              </Card.Content>
-              <Card.Actions>
-                <Button>Link</Button>
-              </Card.Actions>
+              <Card.Title
+                title={state.name}
+                subtitle={`${state.status}`}
+                left={(props) => <Image style={{ width: 20, height: 20 }} {...props} source={imageSelector(state.status)}  />}
+              />
             </Card>
           ))
         }
