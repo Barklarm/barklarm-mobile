@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Card, Button, TextInput, FAB, Portal } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
-import { Select, Input , Heading, Column } from 'native-base';
 import { observersComponentBuilderMap } from './helpers/observersComponentBuilderMap';
 import { observersTitleBuilderMap } from './helpers/observersTitleBuilderMap';
 import { ObserversParams } from '../../types/ObserversParams';
 
 export const Observers = ({ observables, add, remove, update, save }: ObserversParams) => {
   
-  const [state, setState] = React.useState({ open: false });
+  const [state, setState] = useState({ open: false });
 
   const onStateChange = ({ open }: any) => setState({ open });
   const { open } = state;
@@ -61,8 +60,8 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
           open={open}
           icon={open ? 'cog' : 'plus'}
           actions={[
-            { label: 'Add',icon: 'plus', onPress: () => console.log('Pressed add') },
-            { label: 'Save',icon: 'content-save', onPress: () => console.log('Pressed remove') },
+            { label: 'Add',icon: 'plus', onPress: () => add({ type: '' }) },
+            { label: 'Save',icon: 'content-save', onPress: () => save(observables) },
           ]}
           onStateChange={onStateChange}
           onPress={() => {
@@ -72,16 +71,6 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
           }}
         />
         </Portal>
-      <Column
-        justifyContent="flex-end"
-      >
-        <Button onPress={() => save(observables)}>
-          Save
-        </Button>
-        <Button onPress={() => add({ type: '' })}>
-          Add
-        </Button>
-      </Column>
     </>
   );
 };

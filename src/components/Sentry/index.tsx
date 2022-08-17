@@ -1,31 +1,25 @@
 import React from 'react';
-import { Input } from 'native-base';
+import { TextInput } from 'react-native-paper';
 
 export const Sentry = ({ observable, index, updateFieldWithValue }: any) => (
   <>
-    <Input
-      accessibilityLabel="organization"
-      placeholder="organization"
-      
+    <TextInput
+      label="organization"
       value={observable.organization}
       onChangeText={(value) =>
         updateFieldWithValue('organization', index, value)
       }
     />
-    <Input
-      accessibilityLabel="project"
-      placeholder="project"
-      
+    <TextInput
+      label="project"
       value={observable.project}
       onChangeText={(value) =>
         updateFieldWithValue('project', index, value)
       }
     />
-    <Input
-      accessibilityLabel="authorization Token"
-      placeholder="authorization Token"
-      
-      type="password"
+    <TextInput
+      label="authorization Token"
+      secureTextEntry={true}
       value={observable.authToken}
       onChangeText={(value) =>
         updateFieldWithValue('authToken', index, value)

@@ -2,7 +2,6 @@ import React from "react";
 import * as BackgroundFetch from "expo-background-fetch"
 import * as TaskManager from "expo-task-manager"
 import * as Notifications from 'expo-notifications'
-import { NativeBaseProvider, Box } from "native-base";
 import { MD3LightTheme as DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -114,7 +113,6 @@ export default function App() {
   RegisterBackgroundTask()
   return ( 
     <PaperProvider theme={theme}>
-      <NativeBaseProvider>
         <NavigationContainer>
           <Tab.Navigator
             initialRouteName="Feed"
@@ -127,7 +125,6 @@ export default function App() {
               title:'Configuration', }} />
           </Tab.Navigator>
         </NavigationContainer>
-      </NativeBaseProvider>
     </PaperProvider>
   );
 }

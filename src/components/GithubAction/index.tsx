@@ -1,38 +1,30 @@
 import React from 'react';
-import { Input } from 'native-base';
+import { TextInput } from 'react-native-paper';
 
 export const GithubAction = ({ observable, index, updateFieldWithValue }: any) => (
   <>
-    <Input
+    <TextInput
       accessibilityLabel="owner"
-      placeholder="owner"
-      
       value={observable.owner}
       onChangeText={(value) =>
         updateFieldWithValue('owner', index, value)
       }
     />
-    <Input
-      accessibilityLabel="repo"
-      placeholder="repo"
-      
+    <TextInput
+      label="repo"
       value={observable.repo}
       onChangeText={(value) => updateFieldWithValue('repo', index, value)}
     />
-    <Input
-      accessibilityLabel="Workflow Name"
-      placeholder="Workflow Name"
-      
+    <TextInput
+      label="Workflow Name"
       value={observable.workflowId}
       onChangeText={(value) =>
         updateFieldWithValue('workflowId', index, value)
       }
     />
-    <Input
-      accessibilityLabel="authorization Token"
-      placeholder="authorization Token"
-      
-      type="password"
+    <TextInput
+      label="authorization Token"
+      secureTextEntry={true}
       value={observable.authToken}
       onChangeText={(value) =>
         updateFieldWithValue('authToken', index, value)

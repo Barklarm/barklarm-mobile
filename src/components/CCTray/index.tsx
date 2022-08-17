@@ -1,21 +1,17 @@
 import React from 'react';
-import { Input } from 'native-base';
+import { TextInput } from 'react-native-paper';
 
 export const CCTray = ({ observable, index, updateFieldWithValue }: any) => (
   <>
-    <Input
-      accessibilityLabel="url"
-      placeholder="url"
-      
+    <TextInput
+      label="url"
       value={observable.url}
-      onChangeText={(value) => updateFieldWithValue('url', index, value)}
+      onChangeText={(value: any) => updateFieldWithValue('url', index, value)}
     />
-    <Input
-      accessibilityLabel="Project Name"
-      placeholder="Project Name"
-      
+    <TextInput
+      label="Project Name"
       value={observable.name}
-      onChangeText={(value) => updateFieldWithValue('name', index, value)}
+      onChangeText={(value: any) => updateFieldWithValue('name', index, value)}
     />
   </>
 );
