@@ -7,9 +7,9 @@ import '@testing-library/jest-dom';
 import { CCTray } from './index';
 import { faker } from '@faker-js/faker';
 
-jest.mock('@mui/material/TextField', () => ({
+jest.mock('react-native-paper', () => ({
   __esModule: true,
-  default: (props: any) => <input data-testid={`textField-${props.label}`} {...props} />,
+  TextInput: (props: any) => (<input data-testid={`textField-${props.label}`} {...props} />),
 }));
 
 describe('cctray', () => {

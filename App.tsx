@@ -29,7 +29,6 @@ const observerManager = new ObserverManager()
 const statusChecker = observerStatusChecker(observerManager)
 statusChecker.Register()
 NavigationDarkTheme.colors = {...NavigationDarkTheme.colors, ...PaperDarkTheme.colors}
-console.log(NavigationDarkTheme)
 
 export default function App() {
   return ( 
@@ -45,8 +44,6 @@ export default function App() {
                 } else if (route.name === 'Settings') {
                   iconName = 'gear';
                 }
-    
-                // You can return any component that you like here!
                 return <AwesomeIcon name={iconName} size={size} color={color} />;
               }
             })}>
