@@ -1,10 +1,16 @@
 import React from 'react';
-import { TextInput } from 'react-native-paper';
+import { TextInput, useTheme } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 
-export const DatadogMonitor = ({ observable, index, updateFieldWithValue }: any) => (
-  <>
+export const DatadogMonitor = ({ observable, index, updateFieldWithValue }: any) => {
+  const { colors } = useTheme();
+  return <>
     <Picker
+      style={{ 
+        backgroundColor: colors.surfaceVariant,
+        color: colors.secondary,
+        marginBottom: 5,
+      }}
       selectedValue={observable.site}
       onValueChange={(value) => updateFieldWithValue('site', index, value)}
     >
@@ -15,6 +21,9 @@ export const DatadogMonitor = ({ observable, index, updateFieldWithValue }: any)
       <Picker.Item value={'dddog-gov.com'} label='US1-FED'/>
     </Picker>
     <TextInput
+      style={{
+        marginBottom: 5,
+      }}
       label="Monitor ID"
       value={observable.monitorId}
       onChangeText={(value) =>
@@ -22,6 +31,9 @@ export const DatadogMonitor = ({ observable, index, updateFieldWithValue }: any)
       }
     />
     <TextInput
+      style={{
+        marginBottom: 5,
+      }}
       label="Api Key"
       secureTextEntry={true}
       value={observable.apiKey}
@@ -30,6 +42,9 @@ export const DatadogMonitor = ({ observable, index, updateFieldWithValue }: any)
       }
     />
     <TextInput
+      style={{
+        marginBottom: 5,
+      }}
       label="App Key"
       secureTextEntry={true}
       value={observable.appKey}
@@ -38,4 +53,4 @@ export const DatadogMonitor = ({ observable, index, updateFieldWithValue }: any)
       }
     />
   </>
-);
+}

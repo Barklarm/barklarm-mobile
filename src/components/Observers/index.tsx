@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Card, Button, TextInput, FAB, Portal } from 'react-native-paper';
+import { Card, Button, TextInput, FAB, Portal, useTheme } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import { observersComponentBuilderMap } from './helpers/observersComponentBuilderMap';
 import { observersTitleBuilderMap } from './helpers/observersTitleBuilderMap';
 import { ObserversParams } from '../../types/ObserversParams';
 
+
 export const Observers = ({ observables, add, remove, update, save }: ObserversParams) => {
-  
+  const { colors } = useTheme();
   const [state, setState] = useState({ open: false });
 
   const onStateChange = ({ open }: any) => setState({ open });
@@ -28,10 +29,24 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
   return (
     <>
       {observables.map((observable: any, index: number) => (
-        <Card key={`observable_${getTitle(observable)}`}>
-          <Card.Title title={getTitle(observable)} />
+        <Card 
+          key={`observable_${index}_${getTitle(observable)}`}
+          style={{
+            marginVertical: 5
+          }}>
+          <Card.Title 
+            title={getTitle(observable)} 
+            titleStyle={{
+              fontWeight: 'bold',
+              fontSize: 20
+            }} />
           <Card.Content>
           <Picker
+            style={{ 
+              backgroundColor: colors.surfaceVariant,
+              color: colors.secondary,
+              marginBottom: 5,
+            }}
             selectedValue={observable.type}
             onValueChange={(value: any) => update('type', index, value)}
           >
@@ -43,6 +58,9 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
           </Picker>
           {getComponent(observable, index, update)}
           <TextInput 
+            style={{
+              marginBottom: 5,
+            }}
             label="alias"
             value={observable.alias}
             onChangeText={(value) => update('alias', index, value)}

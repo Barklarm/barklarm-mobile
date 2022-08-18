@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ScrollView, Image } from 'react-native';
-import { Card, Button, Appbar, Paragraph } from 'react-native-paper';
-import { Avatar, IconButton } from 'react-native-paper';
+import { Card, Appbar } from 'react-native-paper';
 import { State } from "../../types/State";
 import { Status } from "../../types/Status";
 
@@ -38,12 +37,20 @@ export default function Home({observerManager}: any) {
     </Appbar.Header>
       <ScrollView>
         {
-          observablesState.map((state: State) =>(
-            <Card key={`observable_${state.name}`}>
+          observablesState.map((state: State, index: number) =>(
+            <Card 
+              key={`observable_${index}_${state.name}`} 
+              style={{
+                marginVertical: 5
+            }}>
               <Card.Title
                 title={state.name}
-                subtitle={`${state.status}`}
-                left={(props) => <Image style={{ width: 20, height: 20 }} {...props} source={imageSelector(state.status)}  />}
+                subtitle={Status.toString(state.status)}
+                titleStyle={{
+                  fontWeight: 'bold',
+                  fontSize: 20
+                }}
+                left={(props) => <Image style={{ width: 30, height: 30 }} {...props} source={imageSelector(state.status)}  />}
               />
             </Card>
           ))

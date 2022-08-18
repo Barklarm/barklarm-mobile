@@ -4,6 +4,9 @@ import { TextInput } from 'react-native-paper';
 export const Sentry = ({ observable, index, updateFieldWithValue }: any) => (
   <>
     <TextInput
+      style={{
+        marginBottom: 5,
+      }}
       label="organization"
       value={observable.organization}
       onChangeText={(value) =>
@@ -11,6 +14,9 @@ export const Sentry = ({ observable, index, updateFieldWithValue }: any) => (
       }
     />
     <TextInput
+      style={{
+        marginBottom: 5,
+      }}
       label="project"
       value={observable.project}
       onChangeText={(value) =>
@@ -18,6 +24,9 @@ export const Sentry = ({ observable, index, updateFieldWithValue }: any) => (
       }
     />
     <TextInput
+      style={{
+        marginBottom: 5,
+      }}
       label="authorization Token"
       secureTextEntry={true}
       value={observable.authToken}

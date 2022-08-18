@@ -1,10 +1,16 @@
 import React from 'react';
-import { TextInput } from 'react-native-paper';
+import { TextInput, useTheme } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 
-export const NewRelic = ({ observable, index, updateFieldWithValue }: any) => (
-  <>
+export const NewRelic = ({ observable, index, updateFieldWithValue }: any) => {
+  const { colors } = useTheme();
+  return <>
     <Picker
+      style={{ 
+        backgroundColor: colors.surfaceVariant,
+        color: colors.secondary,
+        marginBottom: 5,
+      }}
       selectedValue={observable.site}
       onValueChange={(value) => updateFieldWithValue('site', index, value)}
     >
@@ -12,6 +18,9 @@ export const NewRelic = ({ observable, index, updateFieldWithValue }: any) => (
       <Picker.Item value={'newrelic.com'} label='OTHERS' />
     </Picker>
     <TextInput
+      style={{
+        marginBottom: 5,
+      }}
       label="Api Key"
       secureTextEntry={true}
       value={observable.apiKey}
@@ -20,4 +29,4 @@ export const NewRelic = ({ observable, index, updateFieldWithValue }: any) => (
       }
     />
   </>
-);
+}

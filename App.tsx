@@ -3,10 +3,24 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { observerStatusChecker } from "./src/tasks/observerStatusChecker";
-
+import {
+  DefaultTheme as NavigationDefaultTheme,
+} from '@react-navigation/native';
+import {
+  DefaultTheme as PaperDefaultTheme,
+} from 'react-native-paper';
 import Home from "./src/pages/Home";
 import Settings from "./src/pages/Settings";
 import { ObserverManager } from "./src/domain/observers/ObserverManager";
+
+const CombinedDefaultTheme = {
+  ...PaperDefaultTheme,
+  ...NavigationDefaultTheme,
+  colors: {
+    ...PaperDefaultTheme.colors,
+    ...NavigationDefaultTheme.colors,
+  },
+};
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -16,8 +30,8 @@ export default function App() {
   const statusChecker = observerStatusChecker(observerManager)
   statusChecker.Register()
   return ( 
-    <PaperProvider>
-        <NavigationContainer>
+    <PaperProvider  theme={CombinedDefaultTheme}>
+        <NavigationContainer theme={CombinedDefaultTheme}>
           <Tab.Navigator
             initialRouteName="Feed"
             shifting={true}
