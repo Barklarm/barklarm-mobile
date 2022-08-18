@@ -10,7 +10,15 @@
     "web": "expo start --web",
     "test": "jest --passWithNoTests --runInBand",
     "test:cov": "jest --passWithNoTests --coverage --runInBand",
-    "test:dev": "jest --watch --runInBand"
+    "test:dev": "jest --watch --runInBand",
+    "tsc:check": "tsc --noEmit --skipLibCheck",
+    "lint:check": "eslint src --ext .ts,.tsx --max-warnings=0",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format:fix": "yarn prettier --write src",
+    "format:check": "yarn prettier --check src",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install",
+    "commit": "git add . && cz"
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.0",
