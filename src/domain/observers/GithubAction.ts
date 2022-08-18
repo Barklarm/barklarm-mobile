@@ -1,4 +1,4 @@
-import { Octokit } from "@octokit/rest"
+import { Octokit } from '@octokit/rest';
 import { Observer } from '../../types/Observer';
 import { State } from '../../types/State';
 import { GithubActionConfiguration } from '../../types/GithubActionConfiguration';

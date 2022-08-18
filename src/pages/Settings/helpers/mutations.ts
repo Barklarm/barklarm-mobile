@@ -11,5 +11,5 @@ export const mutations = (observables: any[], setObservables: any) => ({
         currentIndex != index ? observable : { ...observable, [fieldName]: value }
       )
     );
-  }
+  },
 });

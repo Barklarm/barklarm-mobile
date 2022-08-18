@@ -33,7 +33,7 @@ export class DatadogMonitor implements Observer {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Accept': `application/json`,
+          Accept: `application/json`,
           'DD-API-KEY': `${this.apiKey}`,
           'DD-APPLICATION-KEY:': `${this.appKey}`,
         },

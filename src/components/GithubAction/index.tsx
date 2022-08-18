@@ -9,9 +9,7 @@ export const GithubAction = ({ observable, index, updateFieldWithValue }: any) =
       }}
       accessibilityLabel="owner"
       value={observable.owner}
-      onChangeText={(value) =>
-        updateFieldWithValue('owner', index, value)
-      }
+      onChangeText={(value) => updateFieldWithValue('owner', index, value)}
     />
     <TextInput
       style={{
@@ -27,9 +25,7 @@ export const GithubAction = ({ observable, index, updateFieldWithValue }: any) =
       }}
       label="Workflow Name"
       value={observable.workflowId}
-      onChangeText={(value) =>
-        updateFieldWithValue('workflowId', index, value)
-      }
+      onChangeText={(value) => updateFieldWithValue('workflowId', index, value)}
     />
     <TextInput
       style={{
@@ -38,9 +34,7 @@ export const GithubAction = ({ observable, index, updateFieldWithValue }: any) =
       label="authorization Token"
       secureTextEntry={true}
       value={observable.authToken}
-      onChangeText={(value) =>
-        updateFieldWithValue('authToken', index, value)
-      }
+      onChangeText={(value) => updateFieldWithValue('authToken', index, value)}
     />
   </>
 );

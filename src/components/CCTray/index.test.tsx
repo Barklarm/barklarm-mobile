@@ -9,7 +9,7 @@ import { faker } from '@faker-js/faker';
 
 jest.mock('react-native-paper', () => ({
   __esModule: true,
-  TextInput: (props: any) => (<input data-testid={`textField-${props.label}`} {...props} />),
+  TextInput: (props: any) => <input data-testid={`textField-${props.label}`} {...props} />,
 }));
 
 describe('cctray', () => {

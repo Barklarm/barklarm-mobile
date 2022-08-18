@@ -7,6 +7,6 @@ export enum Status {
 
 export namespace Status {
   export function toString(dir: Status): string {
-      return Status[dir];
+    return Status[dir];
   }
 }

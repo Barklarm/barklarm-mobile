@@ -9,9 +9,7 @@ export const Sentry = ({ observable, index, updateFieldWithValue }: any) => (
       }}
       label="organization"
       value={observable.organization}
-      onChangeText={(value) =>
-        updateFieldWithValue('organization', index, value)
-      }
+      onChangeText={(value) => updateFieldWithValue('organization', index, value)}
     />
     <TextInput
       style={{
@@ -19,9 +17,7 @@ export const Sentry = ({ observable, index, updateFieldWithValue }: any) => (
       }}
       label="project"
       value={observable.project}
-      onChangeText={(value) =>
-        updateFieldWithValue('project', index, value)
-      }
+      onChangeText={(value) => updateFieldWithValue('project', index, value)}
     />
     <TextInput
       style={{
@@ -30,9 +26,7 @@ export const Sentry = ({ observable, index, updateFieldWithValue }: any) => (
       label="authorization Token"
       secureTextEntry={true}
       value={observable.authToken}
-      onChangeText={(value) =>
-        updateFieldWithValue('authToken', index, value)
-      }
+      onChangeText={(value) => updateFieldWithValue('authToken', index, value)}
     />
   </>
 );

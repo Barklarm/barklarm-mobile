@@ -24,16 +24,16 @@ export class ObserverManager {
   }
 
   public async refershObservers() {
-  const result: string = await SecureStore.getItemAsync('observables') || '[]';
-  const observableConfiguration = JSON.parse(result)
-    this.observers = observableConfiguration.map(
-      (configuration: ObserverConfiguration) => {
+    const result: string = (await SecureStore.getItemAsync('observables')) || '[]';
+    const observableConfiguration = JSON.parse(result);
+    this.observers = observableConfiguration
+      .map((configuration: ObserverConfiguration) => {
         try {
           return this.ObserversBuildersMap[configuration.type](configuration);
         } catch (error) {
           console.error(error);
         }
-      }
-    ).filter((observable?: Observer) => observable !== undefined) as any;
+      })
+      .filter((observable?: Observer) => observable !== undefined) as any;
   }
 }
