@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ScrollView, Image } from 'react-native';
-import { Card, Appbar } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import { State } from "../../types/State";
 import { Status } from "../../types/Status";
 
@@ -32,9 +32,6 @@ export default function Home({observerManager}: any) {
     }, []);
   return (
     <>
-    <Appbar.Header>
-      <Appbar.Content title="Home" />
-    </Appbar.Header>
       <ScrollView>
         {
           observablesState.map((state: State, index: number) =>(

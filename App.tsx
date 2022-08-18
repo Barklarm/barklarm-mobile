@@ -1,55 +1,61 @@
 import React from "react";
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { observerStatusChecker } from "./src/tasks/observerStatusChecker";
 import {
-  DefaultTheme as NavigationDefaultTheme,
+  DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 import {
-  DefaultTheme as PaperDefaultTheme,
+  MD3DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
 import Home from "./src/pages/Home";
 import Settings from "./src/pages/Settings";
 import { ObserverManager } from "./src/domain/observers/ObserverManager";
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
-const CombinedDefaultTheme = {
-  ...PaperDefaultTheme,
-  ...NavigationDefaultTheme,
+const Tab = createBottomTabNavigator()
+
+const CombinedDarkTheme = {
+  ...PaperDarkTheme,
+  ...NavigationDarkTheme,
   colors: {
-    ...PaperDefaultTheme.colors,
-    ...NavigationDefaultTheme.colors,
+    ...PaperDarkTheme.colors,
+    ...NavigationDarkTheme.colors,
   },
 };
 
-const Tab = createMaterialBottomTabNavigator();
-
+const observerManager = new ObserverManager()
+const statusChecker = observerStatusChecker(observerManager)
+statusChecker.Register()
+NavigationDarkTheme.colors = {...NavigationDarkTheme.colors, ...PaperDarkTheme.colors}
+console.log(NavigationDarkTheme)
 
 export default function App() {
-  const observerManager = new ObserverManager()
-  const statusChecker = observerStatusChecker(observerManager)
-  statusChecker.Register()
   return ( 
-    <PaperProvider  theme={CombinedDefaultTheme}>
-        <NavigationContainer theme={CombinedDefaultTheme}>
+    <PaperProvider theme={CombinedDarkTheme}>
+        <NavigationContainer theme={CombinedDarkTheme}>
           <Tab.Navigator
-            initialRouteName="Feed"
-            shifting={true}
-            sceneAnimationEnabled={false}>
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => {
+                let iconName;
+    
+                if (route.name === 'Home') {
+                  iconName = 'home';
+                } else if (route.name === 'Settings') {
+                  iconName = 'gear';
+                }
+    
+                // You can return any component that you like here!
+                return <AwesomeIcon name={iconName} size={size} color={color} />;
+              }
+            })}>
             <Tab.Screen 
-              name="Home" 
-              options={{ 
-                tabBarIcon: 'home-account', 
-                title:'Home',}
-              }>
+              name="Home">
             {(props) => <Home {...props} observerManager={observerManager} />}
             </Tab.Screen>
             <Tab.Screen 
-              name="Settings"
-              options={{ 
-                tabBarIcon: 'cog', 
-                title:'Configuration', 
-              }} >
+              name="Settings">
                 {(props) => <Settings {...props} observerManager={observerManager} />}
               </Tab.Screen>
           </Tab.Navigator>

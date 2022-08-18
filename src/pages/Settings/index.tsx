@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import { Appbar, Portal } from 'react-native-paper';
+import { Portal } from 'react-native-paper';
 import { Observers as ObserversComponent } from '../../components/Observers';
 import { mutations } from './helpers/mutations';
 import * as SecureStore from 'expo-secure-store';
@@ -16,9 +16,6 @@ export default function Settings({observerManager}: any){
     }, []);
   return (
     <Portal.Host>
-      <Appbar.Header>
-        <Appbar.Content title="Settings" />
-      </Appbar.Header>
       <ScrollView>
         <ObserversComponent
           observables={observables}
