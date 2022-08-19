@@ -19,7 +19,9 @@
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "commit": "git add . && cz",
-    "eas": "eas" 
+    "eas": "eas",
+    "release:patch": "yarn version --patch && git push",
+    "release:minor": "yarn version --patch && git push"
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.0",
