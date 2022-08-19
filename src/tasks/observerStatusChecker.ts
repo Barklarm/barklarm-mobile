@@ -3,9 +3,11 @@ import * as TaskManager from 'expo-task-manager';
 import * as Notifications from 'expo-notifications';
 import { ObserverManager } from '../domain/observers/ObserverManager';
 import { Status } from '../types/Status';
+import { State } from '../types/State';
 
 export const observerStatusChecker = (observerManager: ObserverManager) => {
   const TASK_NAME = 'BARKLARM_BACKGROUND_TASK';
+  let previousState: State[] = [];
 
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -19,7 +21,10 @@ export const observerStatusChecker = (observerManager: ObserverManager) => {
     try {
       const states = await observerManager.getStates();
       states.forEach((state) => {
-        if (state.status === Status.FAILURE) {
+        if (
+          state.status === Status.FAILURE &&
+          previousState.find((localState) => localState.name === state.name)?.status !== Status.FAILURE
+        ) {
           Notifications.scheduleNotificationAsync({
             content: {
               title: 'Barklarm',
@@ -31,6 +36,7 @@ export const observerStatusChecker = (observerManager: ObserverManager) => {
           });
         }
       });
+      previousState = states;
       return states ? BackgroundFetch.BackgroundFetchResult.NewData : BackgroundFetch.BackgroundFetchResult.NoData;
     } catch (err) {
       return BackgroundFetch.BackgroundFetchResult.Failed;
@@ -44,7 +50,7 @@ export const observerStatusChecker = (observerManager: ObserverManager) => {
         startOnBoot: true,
         stopOnTerminate: false,
       });
-      console.log('Task registered');
+      previousState = [];
     } catch (err) {
       console.log('Task Register failed:', err);
     }
