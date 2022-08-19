@@ -26,4 +26,6 @@ jobs:
       run: expo publish --non-interactive
     - name: 🚀 Build on EAS
       if: startsWith(github.event.head_commit.message,'v1.')
-      run: eas build --platform all --latest --auto-submit
+      run: |
+        eas submit --platform ios --profile production --auto-submit --latest
+        eas submit --platform android --profile production --auto-submit
