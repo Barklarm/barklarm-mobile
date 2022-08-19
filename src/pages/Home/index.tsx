@@ -20,7 +20,7 @@ export default function Home({ observerManager }: any) {
   };
   useEffect(() => {
     (async () => {
-      observerManager.refershObservers();
+      await observerManager.refershObservers();
       setObservablesState((await observerManager.getStates()) as any);
       const MINUTES_MS = 300000;
       const interval = setInterval(async () => {
