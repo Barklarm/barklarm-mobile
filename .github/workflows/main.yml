@@ -18,8 +18,11 @@ jobs:
       uses: expo/expo-github-action@v7
       with:
         expo-version: latest
+        eas-version: latest
         token: ${{ secrets.EXPO_TOKEN }}
     - name: 📦 Install dependencies
       run: yarn install
     - name: 🚀 Publish app
       run: expo publish --non-interactive
+    - name: 🚀 Build on EAS
+      run: eas build --platform all --non-interactive
