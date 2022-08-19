@@ -46,7 +46,7 @@ export const observerStatusChecker = (observerManager: ObserverManager) => {
   const Register = async () => {
     try {
       await BackgroundFetch.registerTaskAsync(TASK_NAME, {
-        minimumInterval: 5,
+        minimumInterval: 300,
         startOnBoot: true,
         stopOnTerminate: false,
       });

@@ -22,10 +22,10 @@ export default function Home({ observerManager }: any) {
     (async () => {
       observerManager.refershObservers();
       setObservablesState((await observerManager.getStates()) as any);
-      const MINUTE_MS = 10000;
+      const MINUTES_MS = 300000;
       const interval = setInterval(async () => {
         setObservablesState((await observerManager.getStates()) as any);
-      }, MINUTE_MS);
+      }, MINUTES_MS);
       return () => clearInterval(interval);
     })();
   }, []);
