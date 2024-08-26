@@ -1,3 +1,3 @@
 module.exports = {
-    '*.{ts,tsx}': [() => 'yarn format:fix', 'yarn test', 'git add .'],
-  };
+  '*.{ts,tsx}': [() => 'npm run format:fix', () => 'npm run test', 'git add .'],
+};

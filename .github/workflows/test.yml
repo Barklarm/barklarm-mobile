@@ -5,5 +5,5 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - name: Random Exit Code
-      run: exit $[ $RANDOM % 2 ]
+      - name: Random Exit Code
+        run: exit $[ $RANDOM % 2 ]
