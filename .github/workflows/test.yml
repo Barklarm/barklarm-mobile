@@ -1,9 +1,0 @@
-name: Test
-on:
-  workflow_dispatch:
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Random Exit Code
-        run: exit $[ $RANDOM % 2 ]

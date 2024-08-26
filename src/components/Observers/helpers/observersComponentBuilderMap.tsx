@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapType } from '../../../types/MapType';
+import { MapType } from '../../../../types/MapType';
 import { GithubAction } from '../../GithubAction';
 import { CCTray } from '../../CCTray';
 import { DatadogMonitor } from '../../DatadogMonitor';

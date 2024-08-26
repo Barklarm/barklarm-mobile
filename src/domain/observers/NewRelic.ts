@@ -1,7 +1,7 @@
-import { State } from '../../types/State';
-import { Observer } from '../../types/Observer';
-import { NewRelicConfiguration } from '../../types/NewRelicConfiguration';
-import { Status } from '../../types/Status';
+import { State } from '@/src/types/State';
+import { Observer } from '@/src/types/Observer';
+import { NewRelicConfiguration } from '@/src/types/NewRelicConfiguration';
+import { Status } from '@/src/types/Status';
 
 export class NewRelic implements Observer {
   private readonly url: string;

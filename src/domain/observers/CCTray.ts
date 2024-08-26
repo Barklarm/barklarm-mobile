@@ -1,7 +1,7 @@
-import { State } from '../../types/State';
-import { Observer } from '../../types/Observer';
-import { CCTrayConfiguration } from '../../types/CCTrayConfiguration';
-import { Status } from '../../types/Status';
+import { State } from '@/src/types/State';
+import { Observer } from '@/src/types/Observer';
+import { CCTrayConfiguration } from '@/src/types/CCTrayConfiguration';
+import { Status } from '@/src/types/Status';
 import { XMLParser } from 'fast-xml-parser';
 
 export class CCTray implements Observer {

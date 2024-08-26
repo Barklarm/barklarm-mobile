@@ -3,7 +3,7 @@ import { Card, Button, TextInput, FAB, Portal, useTheme } from 'react-native-pap
 import { Picker } from '@react-native-picker/picker';
 import { observersComponentBuilderMap } from './helpers/observersComponentBuilderMap';
 import { observersTitleBuilderMap } from './helpers/observersTitleBuilderMap';
-import { ObserversParams } from '../../types/ObserversParams';
+import { ObserversParams } from '../../../types/ObserversParams';
 
 export const Observers = ({ observables, add, remove, update, save }: ObserversParams) => {
   const { colors } = useTheme();

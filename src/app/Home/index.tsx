@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ScrollView, Image } from 'react-native';
 import { Card } from 'react-native-paper';
-import { State } from '../../types/State';
-import { Status } from '../../types/Status';
-import { ObserverContext } from '../_layout';
-import { ObserverManager } from '@/domain/observers/ObserverManager';
+import { State } from '@/src/types/State';
+import { Status } from '@/src/types/Status';
+import { ObserverContext } from '@/src/app/_layout';
+import { ObserverManager } from '@/src/domain/observers/ObserverManager';
 
 export default function Home() {
   const observerManager = useContext(ObserverContext) as ObserverManager;
@@ -12,13 +12,13 @@ export default function Home() {
   const imageSelector = (status: Status) => {
     switch (status) {
       case Status.SUCCESS:
-        return require('@/assets/images/ok_icon_big.png');
+        return require('@/src/assets/images/ok_icon_big.png');
       case Status.CHECKING:
-        return require('@/assets/images/running_icon_big.png');
+        return require('@/src/assets/images/running_icon_big.png');
       case Status.NA:
-        return require('@/assets/images/na_icon_big.png');
+        return require('@/src/assets/images/na_icon_big.png');
       case Status.FAILURE:
-        return require('@/assets/images/fail_icon_big.png');
+        return require('@/src/assets/images/fail_icon_big.png');
     }
   };
   useEffect(() => {

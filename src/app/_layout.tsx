@@ -1,10 +1,10 @@
 import { Tabs } from 'expo-router';
 import { PaperProvider } from 'react-native-paper';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { ObserverManager } from '@/domain/observers/ObserverManager';
-import { observerStatusChecker } from '@/tasks/observerStatusChecker';
+import { TabBarIcon } from '@/src/components/navigation/TabBarIcon';
+import { Colors } from '@/src/constants/Colors';
+import { useColorScheme } from '@/src/hooks/useColorScheme';
+import { ObserverManager } from '@/src/domain/observers/ObserverManager';
+import { observerStatusChecker } from '@/src/tasks/observerStatusChecker';
 import React from 'react';
 
 export const ObserverContext = React.createContext<ObserverManager>({} as ObserverManager);

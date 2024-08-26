@@ -1,9 +1,9 @@
 import { GithubAction } from './GithubAction';
 import { CCTray } from './CCTray';
-import { Observer } from '../../types/Observer';
-import { ObserverConfiguration } from '../../types/ObserverConfiguration';
+import { Observer } from '../../../types/Observer';
+import { ObserverConfiguration } from '../../../types/ObserverConfiguration';
 import { DatadogMonitor } from './DatadogMonitor';
-import { MapType } from '../../types/MapType';
+import { MapType } from '../../../types/MapType';
 import { Sentry } from './Sentry';
 import { NewRelic } from './NewRelic';
 

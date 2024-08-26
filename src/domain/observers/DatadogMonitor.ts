@@ -1,7 +1,7 @@
-import { State } from '../../types/State';
-import { Observer } from '../../types/Observer';
-import { DetadogMonitorConfiguration } from '../../types/DetadogMonitorConfiguration';
-import { Status } from '../../types/Status';
+import { State } from '@/src/types/State';
+import { Observer } from '@/src/types/Observer';
+import { DetadogMonitorConfiguration } from '@/src/types/DetadogMonitorConfiguration';
+import { Status } from '@/src/types/Status';
 
 export class DatadogMonitor implements Observer {
   private readonly alias: string;

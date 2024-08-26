@@ -1,7 +1,7 @@
 import * as BackgroundFetch from 'expo-background-fetch';
 import * as TaskManager from 'expo-task-manager';
 import * as Notifications from 'expo-notifications';
-import { ObserverManager } from '../domain/observers/ObserverManager';
+import { ObserverManager } from '../src/domain/observers/ObserverManager';
 import { Status } from '../types/Status';
 import { State } from '../types/State';
 
