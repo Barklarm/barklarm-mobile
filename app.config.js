@@ -46,5 +46,4 @@ export default {
       "projectId": "6002db10-a1bc-4c3a-9332-f42d17dbd6a2"
     }
   }
-  }
 };
