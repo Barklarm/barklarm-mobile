@@ -30,6 +30,15 @@ export default function RootLayout() {
               tabBarIcon: ({ color, focused }) => <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />,
             }}
           />
+          <Tabs.Screen
+            name="settings"
+            options={{
+              title: 'Settings',
+              tabBarIcon: ({ color, focused }) => (
+                <TabBarIcon name={focused ? 'options' : 'options-outline'} color={color} />
+              ),
+            }}
+          />
         </Tabs>
       </ObserverContext.Provider>
     </PaperProvider>

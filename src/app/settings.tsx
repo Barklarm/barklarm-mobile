@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Platform, ScrollView } from 'react-native';
 import { Portal } from 'react-native-paper';
-import { Observers as ObserversComponent } from '../../components/Observers';
-import { mutations } from './helpers/mutations';
+import { Observers as ObserversComponent } from '../components/Observers';
+import { mutations } from './mutations';
 import * as SecureStore from 'expo-secure-store';
-import { ObserverContext } from '../_layout';
+import { ObserverContext } from './_layout';
 import { ObserverManager } from '@/src/domain/observers/ObserverManager';
 
 export default function Settings() {

@@ -42,14 +42,14 @@ export default {
     typedRoutes: true,
   },
   updates: {
-    url: "https://u.expo.dev/6002db10-a1bc-4c3a-9332-f42d17dbd6a2"
+    url: 'https://u.expo.dev/6002db10-a1bc-4c3a-9332-f42d17dbd6a2',
   },
   runtimeVersion: {
-    policy: "appVersion"
+    policy: 'appVersion',
   },
   extra: {
     eas: {
-      "projectId": "6002db10-a1bc-4c3a-9332-f42d17dbd6a2"
-    }
-  }
+      projectId: '6002db10-a1bc-4c3a-9332-f42d17dbd6a2',
+    },
+  },
 };
