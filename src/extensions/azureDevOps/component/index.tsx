@@ -1,40 +1,43 @@
 import React from 'react';
-import TextField from '@mui/material/TextField';
+import { TextInput, useTheme } from 'react-native-paper';
 
-export const AzureDevOps = ({ observable, index, updateFieldWithValue, translate }: any) => (
-  <>
-    <TextField
-      label={translate('Organization Url')}
-      variant="standard"
-      value={observable.orgUrl}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        updateFieldWithValue('orgUrl', index, event.target.value)
-      }
-    />
-    <TextField
-      label={translate('Project')}
-      variant="standard"
-      value={observable.project}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        updateFieldWithValue('project', index, event.target.value)
-      }
-    />
-    <TextField
-      label={translate('Pipeline ID')}
-      variant="standard"
-      value={observable.pipelineId}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        updateFieldWithValue('pipelineId', index, event.target.value)
-      }
-    />
-    <TextField
-      label={translate('Authorization Token')}
-      variant="standard"
-      type="password"
-      value={observable.authToken}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        updateFieldWithValue('authToken', index, event.target.value)
-      }
-    />
-  </>
-);
+export const AzureDevOps = ({ observable, index, updateFieldWithValue }: any) => {
+  const { colors } = useTheme();
+  return (
+    <>
+      <TextInput
+        style={{
+          marginBottom: 5,
+        }}
+        label={'Organization Url'}
+        value={observable.orgUrl}
+        onChangeText={(value) => updateFieldWithValue('orgUrl', index, value)}
+      />
+      <TextInput
+        style={{
+          marginBottom: 5,
+        }}
+        label={'Project'}
+        value={observable.project}
+        onChangeText={(value) => updateFieldWithValue('project', index, value)}
+      />
+      <TextInput
+        style={{
+          marginBottom: 5,
+        }}
+        label={'Pipeline ID'}
+        value={observable.pipelineId}
+        onChangeText={(value) => updateFieldWithValue('pipelineId', index, value)}
+      />
+      <TextInput
+        style={{
+          marginBottom: 5,
+        }}
+        label={'Authorization Token'}
+        secureTextEntry={true}
+        value={observable.authToken}
+        onChangeText={(value) => updateFieldWithValue('authToken', index, value)}
+      />
+    </>
+  );
+};

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Platform, ScrollView } from 'react-native';
 import { Portal } from 'react-native-paper';
 import { Observers as ObserversComponent } from '@/src/components/Observers';
-import { mutations } from '@/src/app/mutations';
+import { mutations } from '@/src/domain/mutations';
 import * as SecureStore from 'expo-secure-store';
 import { ObserverContext } from '@/src/app/_layout';
 import { ObserverManager } from '@/src/extensions/ObserverManager';
