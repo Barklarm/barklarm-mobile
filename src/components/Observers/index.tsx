@@ -29,7 +29,7 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
     <>
       {observables.map((observable: any, index: number) => (
         <Card
-          key={`observable_${index}_${getTitle(observable)}`}
+          key={`observable_${index}`}
           style={{
             marginVertical: 5,
           }}
