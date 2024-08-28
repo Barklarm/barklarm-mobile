@@ -26,4 +26,4 @@ jobs:
         run: eas update --channel dev --message "new main release" 
       - name: 🚀 Build on EAS
         if: startsWith(github.event.head_commit.message,'v0.')
-        run: eas build --platform all --profile production --non-interactive --no-wait --auto-submit
+        run: eas build --platform android --profile production --non-interactive --no-wait --auto-submit
