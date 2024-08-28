@@ -5,7 +5,7 @@ import { Observers as ObserversComponent } from '@/src/components/Observers';
 import { mutations } from '@/src/app/mutations';
 import * as SecureStore from 'expo-secure-store';
 import { ObserverContext } from '@/src/app/_layout';
-import { ObserverManager } from '@/src/domain/observers/ObserverManager';
+import { ObserverManager } from '@/src/extensions/ObserverManager';
 
 export default function Settings() {
   const observerManager = useContext(ObserverContext) as ObserverManager;

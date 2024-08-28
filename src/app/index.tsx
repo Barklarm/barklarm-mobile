@@ -4,7 +4,7 @@ import { Card } from 'react-native-paper';
 import { State } from '@/src/types/State';
 import { Status } from '@/src/types/Status';
 import { ObserverContext } from '@/src/app/_layout';
-import { ObserverManager } from '@/src/domain/observers/ObserverManager';
+import { ObserverManager } from '@/src/extensions/ObserverManager';
 
 export default function Home() {
   const observerManager = useContext(ObserverContext) as ObserverManager;
