@@ -1,59 +1,48 @@
-import { State } from '../../../types/State';
-import { Observer } from '../../../types/Observer';
-import { DetadogMonitorConfiguration } from '../../../types/DetadogMonitorConfiguration';
-import { client, v1 } from '@datadog/datadog-api-client';
-import { Status } from '../../../types/Status';
-import { ServerConfiguration } from '@datadog/datadog-api-client/dist/packages/datadog-api-client-common';
-import {
-  OK,
-  WARN,
-  ALERT,
-  IGNORED,
-  NO_DATA,
-  SKIPPED,
-  UNKNOWN,
-} from '@datadog/datadog-api-client/dist/packages/datadog-api-client-v1/models/MonitorOverallStates';
+import { State } from '@/src/types/State';
+import { Observer } from '@/src/types/Observer';
+import { DetadogMonitorConfiguration } from '@/src/types/DetadogMonitorConfiguration';
+import { Status } from '@/src/types/Status';
 
 export class DatadogMonitor implements Observer {
   private readonly alias: string;
   private readonly site: string;
+  private readonly apiKey: string;
+  private readonly appKey: string;
   private readonly monitorId: number;
-  private readonly apiInstance: v1.MonitorsApi;
 
   private readonly overalStateMap: any = {
-    [OK]: Status.SUCCESS,
-    [ALERT]: Status.FAILURE,
-    [WARN]: Status.FAILURE,
-    [IGNORED]: Status.NA,
-    [NO_DATA]: Status.NA,
-    [SKIPPED]: Status.NA,
-    [UNKNOWN]: Status.NA,
+    [4]: Status.SUCCESS,
+    [0]: Status.FAILURE,
+    [7]: Status.FAILURE,
+    [1]: Status.NA,
+    [3]: Status.NA,
+    [5]: Status.NA,
+    [6]: Status.NA,
   };
   constructor({ alias, site, apiKey, appKey, monitorId }: DetadogMonitorConfiguration) {
     this.alias = alias || `Datadog: ${monitorId}`;
     this.site = site;
     this.monitorId = monitorId;
-    const configuration: client.Configuration = client.createConfiguration({
-      baseServer: new ServerConfiguration('https://{subdomain}.{site}', {
-        site: site,
-        subdomain: 'api',
-      }),
-      authMethods: {
-        apiKeyAuth: apiKey,
-        appKeyAuth: appKey,
-      },
-    });
-    this.apiInstance = new v1.MonitorsApi(configuration);
+    this.apiKey = apiKey;
+    this.appKey = appKey;
   }
   public async getState(): Promise<State> {
     const link = `https://app.${this.site}/monitors/${this.monitorId}`;
+    const url = `https://api.${this.site}/api/v1/monitor/${this.monitorId}`;
     try {
-      const data: v1.Monitor = await this.apiInstance.getMonitor({
-        monitorId: this.monitorId,
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          Accept: `application/json`,
+          'DD-API-KEY': `${this.apiKey}`,
+          'DD-APPLICATION-KEY:': `${this.appKey}`,
+        },
       });
+      if (!response.ok) throw new Error('response is invalid');
+      const body = await response.json();
       return {
         name: this.alias,
-        status: this.overalStateMap[data.overallState as any],
+        status: this.overalStateMap[body.overallState],
         link,
       };
     } catch (error) {
