@@ -1,9 +1,9 @@
 import * as BackgroundFetch from 'expo-background-fetch';
 import * as TaskManager from 'expo-task-manager';
 import * as Notifications from 'expo-notifications';
-import { ObserverManager } from '../src/domain/observers/ObserverManager';
-import { Status } from '../types/Status';
-import { State } from '../types/State';
+import { ObserverManager } from '@/src/domain/observers/ObserverManager';
+import { Status } from '@/src/types/Status';
+import { State } from '@/src/types/State';
 
 export const observerStatusChecker = (observerManager: ObserverManager) => {
   const TASK_NAME = 'BARKLARM_BACKGROUND_TASK';

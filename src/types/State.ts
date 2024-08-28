@@ -1,4 +1,4 @@
-import { Status } from './Status';
+import { Status } from '@/src/types/Status';
 
 export type State = {
   name: string;
