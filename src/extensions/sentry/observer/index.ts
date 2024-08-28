@@ -1,8 +1,7 @@
-import { State } from '../../../types/State';
-import { Observer } from '../../../types/Observer';
-import { SentryConfiguration } from '../../../types/SentryConfiguration';
-import { Status } from '../../../types/Status';
-import fetch from 'electron-fetch';
+import { State } from '@/src/types/State';
+import { Observer } from '@/src/types/Observer';
+import { SentryConfiguration } from '@/src/types/SentryConfiguration';
+import { Status } from '@/src/types/Status';
 
 export class Sentry implements Observer {
   private readonly url: string;
