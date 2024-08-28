@@ -23,7 +23,7 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
       - name: 🚀 Publish app
-        run: eas update --channel dev --message "new main release"
+        run: eas update --channel dev --message "new main release" 
       - name: 🚀 Build on EAS
-        if: startsWith(github.event.head_commit.message,'v1.')
+        if: startsWith(github.event.head_commit.message,'v0.')
         run: eas build --platform all --profile production --non-interactive --no-wait --auto-submit
