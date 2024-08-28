@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Card, Button, TextInput, FAB, Portal, useTheme } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
-import { observersComponentBuilderMap } from './helpers/observersComponentBuilderMap';
-import { observersTitleBuilderMap } from './helpers/observersTitleBuilderMap';
-import { ObserversParams } from '../../../types/ObserversParams';
+import { observersComponentBuilderMap } from '@/src/components/Observers/helpers/observersComponentBuilderMap';
+import { observersTitleBuilderMap } from '@/src/components/Observers/helpers/observersTitleBuilderMap';
+import { ObserversParams } from '@/src/types/ObserversParams';
 
 export const Observers = ({ observables, add, remove, update, save }: ObserversParams) => {
   const { colors } = useTheme();

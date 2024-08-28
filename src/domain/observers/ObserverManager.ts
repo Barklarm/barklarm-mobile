@@ -1,11 +1,11 @@
-import { GithubAction } from './GithubAction';
-import { CCTray } from './CCTray';
-import { Observer } from '../../../types/Observer';
-import { ObserverConfiguration } from '../../../types/ObserverConfiguration';
-import { DatadogMonitor } from './DatadogMonitor';
-import { MapType } from '../../../types/MapType';
-import { Sentry } from './Sentry';
-import { NewRelic } from './NewRelic';
+import { GithubAction } from '@/src/domain/observers/GithubAction';
+import { CCTray } from '@/src/domain/observers/CCTray';
+import { Observer } from '@/src/types/Observer';
+import { ObserverConfiguration } from '@/src/types/ObserverConfiguration';
+import { DatadogMonitor } from '@/src/domain/observers/DatadogMonitor';
+import { MapType } from '@/src/types/MapType';
+import { Sentry } from '@/src/domain/observers/Sentry';
+import { NewRelic } from '@/src/domain/observers/NewRelic';
 
 import * as SecureStore from 'expo-secure-store';
 import { Platform } from 'react-native';
