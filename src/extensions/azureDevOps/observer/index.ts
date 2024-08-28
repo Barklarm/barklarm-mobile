@@ -1,8 +1,8 @@
-import { Observer } from '../../../types/Observer';
-import { State } from '../../../types/State';
-import { Status } from '../../../types/Status';
+import { Observer } from '@/src/types/Observer';
+import { State } from '@/src/types/State';
+import { Status } from '@/src/types/Status';
 import { getPersonalAccessTokenHandler, WebApi } from 'azure-devops-node-api';
-import { AzureDevOpsConfiguration } from '../../../types/AzureDevOpsConfiguration';
+import { AzureDevOpsConfiguration } from '@/src/types/AzureDevOpsConfiguration';
 import { RunResult, RunState } from 'azure-devops-node-api/interfaces/PipelinesInterfaces';
 
 export class AzureDevOps implements Observer {

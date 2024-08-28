@@ -3,6 +3,7 @@ import { Card, Button, TextInput, FAB, Portal, useTheme } from 'react-native-pap
 import { Picker } from '@react-native-picker/picker';
 import { observersComponentBuilderMap } from '@/src/extensions/observersComponentBuilderMap';
 import { observersTitleBuilderMap } from '@/src/extensions/observersTitleBuilderMap';
+import { observersList } from '@/src/extensions/observersList';
 import { ObserversParams } from '@/src/types/ObserversParams';
 
 export const Observers = ({ observables, add, remove, update, save }: ObserversParams) => {
@@ -51,11 +52,9 @@ export const Observers = ({ observables, add, remove, update, save }: ObserversP
               selectedValue={observable.type}
               onValueChange={(value: any) => update('type', index, value)}
             >
-              <Picker.Item value={'githubAction'} label="Github Action" />
-              <Picker.Item value={'ccTray'} label="CCTray" />
-              <Picker.Item value={'datadogMonitor'} label="Datadog Monitor" />
-              <Picker.Item value={'sentry'} label="Sentry" />
-              <Picker.Item value={'newRelic'} label="New Relic" />
+              {observersList.map(({ value, label }: any) => (
+                <Picker.Item value={value} label={label} />
+              ))}
             </Picker>
             {getComponent(observable, index, update)}
             <TextInput

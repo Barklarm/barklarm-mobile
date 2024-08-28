@@ -1,8 +1,8 @@
-import { Observer } from '../../../types/Observer';
-import { State } from '../../../types/State';
-import { Status } from '../../../types/Status';
+import { Observer } from '@/src/types/Observer';
+import { State } from '@/src/types/State';
+import { Status } from '@/src/types/Status';
 import opsgenie from 'opsgenie-sdk';
-import { OpsgenieConfiguration } from '../../../types/OpsgenieConfiguration';
+import { OpsgenieConfiguration } from '@/src/types/OpsgenieConfiguration';
 
 const promisify =
   (fun: any) =>

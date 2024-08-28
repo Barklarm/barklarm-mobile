@@ -7,4 +7,9 @@ export const observersTitleBuilderMap: MapType<(observable: any) => string> = {
   datadogMonitor: (observable: any) => `Datadog: ${observable.alias || `${observable.site}/${observable.monitorId}`}`,
   sentry: (observable: any) => `Sentry: ${observable.alias || `${observable.organization}/${observable.project}`}`,
   newRelic: (observable: any) => `NewRelic: ${observable.alias || `alerts`}`,
+  azureDevOps: (observable: any) =>
+    `Azure DevOps: ${observable.alias || `${observable.project}/${observable.pipelineId}`}`,
+  opsgenie: (observable: any) => `Opsgenie: ${observable.alias || `${observable.host}/${observable.identifier}`}`,
+  bitbucket: (observable: any) =>
+    `Bitbucket: ${observable.alias || `${observable.workspace}/${observable.repo}/${observable.branch}`}`,
 };

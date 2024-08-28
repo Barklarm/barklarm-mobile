@@ -1,35 +1,40 @@
 import React from 'react';
-import TextField from '@mui/material/TextField';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import { TextInput, useTheme } from 'react-native-paper';
+import { Picker } from '@react-native-picker/picker';
 
-export const Opsgenie = ({ observable, index, updateFieldWithValue, translate }: any) => (
-  <>
-    <Select
-      value={observable.host}
-      label={translate('Host')}
-      variant="standard"
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) => updateFieldWithValue('host', index, event.target.value)}
-    >
-      <MenuItem value={'eu.opsgenie.com'}>EU</MenuItem>
-      <MenuItem value={'opsgenie.com'}>Others</MenuItem>
-    </Select>
-    <TextField
-      label={translate('Identifier')}
-      variant="standard"
-      value={observable.identifier}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        updateFieldWithValue('identifier', index, event.target.value)
-      }
-    />
-    <TextField
-      label={translate('API Key')}
-      variant="standard"
-      type="password"
-      value={observable.apiKey}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-        updateFieldWithValue('apiKey', index, event.target.value)
-      }
-    />
-  </>
-);
+export const Opsgenie = ({ observable, index, updateFieldWithValue }: any) => {
+  const { colors } = useTheme();
+  return (
+    <>
+      <Picker
+        style={{
+          backgroundColor: colors.surfaceVariant,
+          color: colors.secondary,
+          marginBottom: 5,
+        }}
+        selectedValue={observable.host}
+        onValueChange={(value) => updateFieldWithValue('host', index, value)}
+      >
+        <Picker.Item value={'eu.opsgenie.com'} label="EU" />
+        <Picker.Item value={'opsgenie.com'} label="Others" />
+      </Picker>
+      <TextInput
+        style={{
+          marginBottom: 5,
+        }}
+        label={'Identifier'}
+        value={observable.identifier}
+        onChangeText={(value) => updateFieldWithValue('identifier', index, value)}
+      />
+      <TextInput
+        style={{
+          marginBottom: 5,
+        }}
+        label={'API Key'}
+        secureTextEntry={true}
+        value={observable.apiKey}
+        onChangeText={(value) => updateFieldWithValue('apiKey', index, value)}
+      />
+    </>
+  );
+};
