@@ -1,10 +1,10 @@
 import React from 'react';
 import { MapType } from '@/src/types/MapType';
-import { GithubAction } from '@/src/components/GithubAction';
-import { CCTray } from '@/src/components/CCTray';
-import { DatadogMonitor } from '@/src/components/DatadogMonitor';
-import { Sentry } from '@/src/components/Sentry';
-import { NewRelic } from '@/src/components/NewRelic';
+import { GithubAction } from '@/src/extensions/github/component';
+import { CCTray } from '@/src/extensions/cctray/component';
+import { DatadogMonitor } from '@/src/extensions/datadog/component';
+import { Sentry } from '@/src/extensions/sentry/component';
+import { NewRelic } from '@/src/extensions/newRelic/component';
 
 export const observersComponentBuilderMap: MapType<
   (observable: any, index: number, updateFieldWithValue: any) => JSX.Element
