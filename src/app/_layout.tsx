@@ -3,7 +3,7 @@ import { PaperProvider } from 'react-native-paper';
 import { TabBarIcon } from '@/src/components/navigation/TabBarIcon';
 import { Colors } from '@/src/constants/Colors';
 import { useColorScheme } from '@/src/hooks/useColorScheme';
-import { ObserverManager } from '@/src/domain/observers/ObserverManager';
+import { ObserverManager } from '@/src/extensions/ObserverManager';
 import { observerStatusChecker } from '@/src/tasks/observerStatusChecker';
 import React from 'react';
 
