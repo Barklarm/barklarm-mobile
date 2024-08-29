@@ -5,11 +5,11 @@ export default {
   slug: 'barklarm',
   version: project.version,
   orientation: 'portrait',
-  icon: './assets/images/icon.png',
+  icon: './src/assets/images/icon.png',
   userInterfaceStyle: 'light',
   scheme: 'myapp',
   splash: {
-    image: './assets/images/splash.png',
+    image: './src/assets/images/splash.png',
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   },
@@ -24,7 +24,7 @@ export default {
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: './assets/images/adaptive-icon.png',
+      foregroundImage: './src/assets/images/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
     },
     package: 'com.kanekotic.barklarm',
