@@ -30,7 +30,7 @@ jobs:
           echo $ANDROID_JSON_BASE64 | base64 --decode > ./release/android.json
           echo $APPLE_P8_BASE64 | base64 --decode > ./release/apple.p8
       - name: 🚀 Publish app
-        run: eas update --channel dev --message "new main release" 
+        run: eas update --channel production --message "new main release" 
       - name: 🚀 Build on EAS
         if: startsWith(github.event.head_commit.message,'v0.')
         run: eas build --platform android --profile production --non-interactive --no-wait --auto-submit
