@@ -19,7 +19,7 @@ export default {
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.kanekotic.barklarm',
+    bundleIdentifier: 'com.barklarm.barklarm',
     buildNumber: project.version,
   },
   android: {
@@ -27,7 +27,7 @@ export default {
       foregroundImage: './src/assets/images/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
     },
-    package: 'com.kanekotic.barklarm',
+    package: 'com.barklarm.barklarm',
     versionCode: project.version
       .split('.')
       .map((number) => Number(number))
